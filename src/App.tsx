@@ -39,7 +39,7 @@ export default class App extends React.Component<Props,State>{
           <Col>
             <ol>
               <li>Ga naar <a href="https://www.assistonline.eu/signin.aspx">assistonline.eu</a>.</li>
-              <li>Download het overzicht van alle ledenlijsten als CSV bestand.</li>
+              <li>Download het overzicht van alle leden als CSV bestand.</li>
               <li>Converteer het CSV bestand naar ledenlijsten met behulp van deze website. Klik op de groepsnamen om de ledenlijsten te downloaden.</li>
             </ol>
             <CSVFileUploader 
