@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3f3a9c0f-c96d-4037-960c-66cd745ccca3/deploy-status)](https://app.netlify.com/sites/assist-ledenlijsten/deploys)
+
 Basic React application for users of [Assist](https://www.assistonline.eu/).
 It
 
