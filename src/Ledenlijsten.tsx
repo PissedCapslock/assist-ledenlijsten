@@ -47,7 +47,7 @@ export default class Ledenlijsten extends React.Component<Props, State>{
             return;
         }
         const reader = new FileReader();
-        reader.readAsText(file, 'UTF-8');
+        reader.readAsText(file, 'ISO-8859-1');
 
         reader.addEventListener("load",(e)=>{
             const text = e.target != null ? e.target.result as string: "";
@@ -133,6 +133,8 @@ export default class Ledenlijsten extends React.Component<Props, State>{
         `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
         <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+        <head>
+        <meta charset="UTF-8">
         <title>Aanwezigheidslijst</title>
         <style>
         body {
@@ -158,13 +160,16 @@ export default class Ledenlijsten extends React.Component<Props, State>{
         }
         
         th.aanwezigheid {
-            width: 3em;
+            width: 4em;
             text-align: center;
             vertical-align: bottom;
         }
         th {
             border-style:dotted;
             border-width:1px;
+        }
+        tr {
+            page-break-inside: avoid;
         }
         tr.oddRow {
             background-color: #F8F8FF;
@@ -173,6 +178,10 @@ export default class Ledenlijsten extends React.Component<Props, State>{
         tr.evenRow {
             background-color: #DCDCDC;
         }
+
+        thead {
+            display: table-header-group;
+        }
         </style>
         </head>
         <body>
@@ -180,10 +189,12 @@ export default class Ledenlijsten extends React.Component<Props, State>{
             <h3>Maand: </h3>
                 <p>Vul elke les in de eerste rij de dag in. Plaats een X indien de zwemmer aanwezig is.</p>
                 <table>
-                    <tr>
-                        <th>Naam<br>&nbsp;&nbsp;Tel1<br>&nbsp;&nbsp;Tel2</th>
-                        ${headerColumns}
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Naam<br>&nbsp;&nbsp;Tel1<br>&nbsp;&nbsp;Tel2</th>
+                            ${headerColumns}
+                        </tr>
+                    </thead>
                     ${tableBody}
                 </table>
                 <p>Gebaseerd op de Assist gegevens van ${today}.</p>
@@ -201,7 +212,7 @@ export default class Ledenlijsten extends React.Component<Props, State>{
         this.updateLijsten(this.props.file);
         const listItems = this.state.ledenLijsten.map(lijst => {
             const base64Encoded = this.toBase64(lijst.htmlVersie);
-            const href = "data:application/octet-stream;charset=utf-16le;base64," + base64Encoded;
+            const href = "data:application/octet-stream;charset=utf-8;base64," + base64Encoded;
             const fileName = lijst.groepNaam + ".html";
             return (
             <li key={lijst.groepNaam}>
