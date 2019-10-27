@@ -47,7 +47,7 @@ export default class Ledenlijsten extends React.Component<Props, State>{
             return;
         }
         const reader = new FileReader();
-        reader.readAsText(file);
+        reader.readAsText(file, 'UTF-8');
 
         reader.addEventListener("load",(e)=>{
             const text = e.target != null ? e.target.result as string: "";
