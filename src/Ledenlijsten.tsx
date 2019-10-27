@@ -144,6 +144,7 @@ export default class Ledenlijsten extends React.Component<Props, State>{
         table {
             border-collapse:collapse;
             empty-cells:show;
+            width: 100%;
         }
         th {
             font-size: 9px;
@@ -160,7 +161,7 @@ export default class Ledenlijsten extends React.Component<Props, State>{
         }
         
         th.aanwezigheid {
-            width: 4em;
+            width: 5em;
             text-align: center;
             vertical-align: bottom;
         }
